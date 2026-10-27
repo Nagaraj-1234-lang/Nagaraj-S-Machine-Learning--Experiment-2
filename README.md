@@ -1,5 +1,5 @@
 # Nagaraj-S-Machine-Learning--Experiment-2
-## DATE:  28/08/2026
+## DATE : 01/09/2026
 
 
 
@@ -7,38 +7,39 @@
 
 
 
+## AIM: 
 
- 
 
-## AIM
 
 
 
 
+Compute descriptive statistics and empirical probabilities; generate samples from 
+distributions. 
 
 
 
 
 
-Introduce matrix operations used in ML: transpose, inverse, solve linear systems, eigen decomposition. 
 
 
+## ALGORITHM (brief): 
 
 
 
 
 
 
-## THEORY:
 
+Use pandas.Series for statistics; numpy.random for sampling.
 
 
 
 
 
 
-Linear algebra (matrix inversion, eigen-decomposition) underpins PCA, linear models, and many optimization problems. Conditioning/invertibility matters. 
 
+## THEORY: 
 
 
 
@@ -46,37 +47,7 @@ Linear algebra (matrix inversion, eigen-decomposition) underpins PCA, linear mod
 
 
 
-
-
-## ALGORITHM :
-
-
-
-
-
-
- 
-Direct use of numpy.linalg routines; relate to linear regression normal equations.
-
-
-
-
-
-
-
-
-
-## PROGRAM 
-
-
-
-
-
-
-
-
-
-
+Descriptive statistics and sampling basics used throughout ML.
 
 
 
@@ -87,96 +58,43 @@ Direct use of numpy.linalg routines; relate to linear regression normal equation
 
 ```
 
+## INPUT :
+
+
+# EXPRIMENT 2
 import numpy as np
 import pandas as pd
-A= np.array([[2.0,1.0],[1.0,3.0]])
-B= np.array([1.0,2.0])
-print ("matrix A:\n",A)
-print ("\ntranspose A^T:\n",A.T)
-print("\ninverse A^-1:\n", np.linalg.inv(A))
-eigvals, eigvecs = np.linalg.eig(A)
-print("\nEigenvalues:", np.round(eigvals ,4))
-x= np.linalg.solve(A,B)
-print ("\nsolve A x = B--> x:",np.round(x,4))
-
-
-```
+heights = np.array([160,165,170,180,155,168,172,169,158])
+s = pd.Series(heights)
+print("Mean:", s.mean())
+print("Median:", s.median())
+print("Std dev:", round(s.std(),3))
+print("Variance:", round(s.var(),3))
+print("P(height> 170):", (s>170).mean())
+sample = np.random.normal(loc=s.mean(), scale=s.std(), size=10)
+print("Random sample (10) from normal around mean:", np.round(sample,2))
 
 
 
+## OUTPUT :
 
 
-
-
-
-
-
-
-
-
-
-
-## OUTPUT
-
-
-
-
-
-
-
-
-
-
-
-
-
+Mean: 166.33333333333334
+Median: 168.0
+Std dev: 7.762
+Variance: 60.25
+P(height> 170): 0.2222222222222222
+Random sample (10) from normal around mean: [176.88 166.19 164.79 167.15 159.1  175.4  172.78 170.16 162.91 159.06]
 
 
 
 ```
 
-matrix A:
- [[2. 1.]
- [1. 3.]]
-
-transpose A^T:
- [[2. 1.]
- [1. 3.]]
-
-inverse A^-1:
- [[ 0.6 -0.2]
- [-0.2  0.4]]
-
-Eigenvalues: [1.382 3.618]
-
-solve A x = B--> x: [0.2 0.6]
-
-```
 
 
 
 
+## RESULT
 
 
-## RESULT: 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Students see concrete matrix computations and how to solve linear systems; relate solve() to normal equations in linear regression.
+Students learn central tendency, spread, and simple empirical probability estimation.
